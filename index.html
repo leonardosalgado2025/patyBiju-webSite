@@ -38,11 +38,11 @@
             </a>
             <!-- Nav List -->
             <ul class="navbar">
-                <li><a class="active" rel="internal" href="#home">Home</a></li>
+                <li><a class="active" id="home-link" rel="internal" href="#home">Home</a></li>
                 <li>
-                    <a href="#" class="categoria">Bijuteria</a>
+                    <a href="#" id="bijuteria-link">Bijuteria</a>
                     <ul class="dropdown">
-                        <li><a href="#">Conjuntos</a></li>
+                        <li><a href="#biju-conjuntos">Conjuntos</a></li>
                         <li><a href="#">Pulseiras</a></li>
                         <li><a href="#">Colares</a></li>
                         <li><a href="#">Brincos</a></li>
@@ -54,7 +54,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#" class="categoria">Lembranças</a>
+                    <a href="#">Lembranças</a>
                     <ul class="dropdown">
                         <li><a href="#">Porta-chaves</a></li>
                         <li><a href="#">Gangas</a></li>
@@ -67,13 +67,29 @@
 
     </header>
 
-    <section class="home" id="home">
+    <section class="home" id="home-page">
         <div class="home-text">
         <h1>Bijuteria em <span>aço</span></h1>
         <p>Totalmente artesanal</p>
         <!-- Home Btn: -->
-        <a href="#" class="btn">Venha conhecer!</a>
+        <a href="#biju-conjuntos" class="btn">Venha conhecer!</a>
         </div>
+    </section>
+
+    <!-- Display dos items de venda: -->
+    <section class="item-section" id="biju-conjuntos-page">
+        <div class="heading">
+            <h2>Bijuteria</h2>
+            <h3>Conjuntos em aço</h3>
+            <p>
+                Os conjuntos são compostos por
+                um par de <a href="#">Brincos</a>
+                e um <a href="#">Colar</a>
+            </p>
+        </div>
+        <article class="item">
+
+        </article>
     </section>
 
     <script src="scripts/menu.js"></script>
