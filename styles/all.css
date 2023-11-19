@@ -242,11 +242,4 @@ i#menu-icon{
 }
 
 
-/* Aside Publicidade: */
-.pub-interna{
-    display: block;
-    background-color: black;
-    margin:3rem auto 0 auto;
-    width: 98.5%;
-    height: 75%;
-}
+
