@@ -12,12 +12,13 @@
 
 *{
     font-family: 'Karla', arial, sans-serif;
+    text-decoration: none;
     margin: 0;
     padding: 0;
     scroll-padding-top: 1rem;
     scroll-behavior: smooth;
-    text-decoration: none;
     list-style-type: none;
+    border: none;
 }
 
 img{
@@ -45,15 +46,16 @@ header{
     border-bottom: 1px solid var(--cor-linhas);
     width: 100%;
     height: 10%;
+    min-height: 70px;
     z-index: 100;
 }
 
 /* _config container */
 .container{
-    max-width: 1068px;
+    max-width: 1300px;
     margin:auto;
     padding-left: 5px;
-    padding-right:5px
+    padding-right: 5px;
 }
 /* __icon */
 i#menu-icon{
@@ -64,13 +66,12 @@ i#menu-icon{
 .nav{
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    gap: 10%;
+    justify-content: flex-start;
+    gap: 20%;
 }
 
 /* __navbar links */
 .navbar{
-    margin-left:6%;
     margin-right: auto;
     display: block;
     flex-grow: 2;
@@ -125,12 +126,13 @@ i#menu-icon{
 
 /* __logo */
 .logo-container{
-    width: 10%;
-    height: 10vh;
+    max-width: 120px;
+    height: 90%;
+    overflow: hidden;
 }
 .logo-container > a > img{
-    overflow: hidden;
-    object-fit: cover;
+    flex-shrink: 0;
+    object-fit: fill;
 }
 
 
@@ -185,7 +187,6 @@ i#menu-icon{
     display: flex;
     flex-direction: column;
     margin: auto;
-    max-width: 1300px;
     width: 100%;
 }
 
@@ -273,7 +274,9 @@ height: 70vh;
     background-color: var(--cor-linhas);
     border: none;
     margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
     padding: 10px;
+    border: 1px solid transparent;
     border-radius: 10px;
     width: 25%;
     cursor: pointer;
@@ -286,31 +289,37 @@ height: 70vh;
 
 /* Footer: */
 footer{
+    display: grid;
+    grid-template-columns: 2fr repeat(3, 1fr);
+    grid-template-rows: 1fr 2fr;
+    grid-template-areas: 
+        'logo logo logo logo'
+        'duvidas apoio loja contacto';
+
+    padding: 10px;
     background-color: black;
-    padding: 5px;
-    margin: auto;
-    height: 30%;
-}
-footer img{
-    width: 10%;
+    width: 100%;
     height: 50%;
+    min-height: fit-content;
 }
-footer div{
+.logo-footer{
     display: block;
-    width: 10%;
-    height: 100%;
+    grid-area: 1 / 1 / 2 / 2;
+    justify-self: left;
+    object-fit: contain;
+    width: 22%;
+    height: 100%;  
+    overflow: hidden;
 }
-.footer-smedia{
-    display: flex;
-    justify-content: space-evenly;
-}
-.smedia-logo{
-    background-color: aqua;
-    width: 50%;
-    height: 20%;
-}
-.smedia-logo img{
+.logo-footer img{
+    object-fit: contain;
     width: 100%;
     height: 100%;
-    object-fit: cover;
 }
+.duvidas{
+    grid-area: duvidas;
+}
+.duvidas h3{
+    color: white;
+}
+
