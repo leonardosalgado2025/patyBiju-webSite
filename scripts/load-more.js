@@ -8,6 +8,8 @@ const itemsData = [
     // Adicione mais objetos conforme necessário
 ];
 
+/* Enevnt Listener */
+document.querySelector('#load-btn').addEventListener('click', loadMoreItems)
 
   function loadMoreItems() {
     currentPage++;

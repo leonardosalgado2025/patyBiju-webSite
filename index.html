@@ -1,8 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-pt">
 <head>
+    <!-- Meta Tags -->
+    <!-- _Originais -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="pt-PT">
+
+    <!-- _Busca -->
+    <meta name="author" content="Leonardo Salgado">
+    <meta name="description" content="Site de montra de bijuteria totalmente artesanal em aço.">
+    <meta name="keywords" content="bijuteria, joias, acessórios, moda, artesanato, lembranças, manual">
+
+    <!-- Social Media -->
+    <meta property="og:title" content="Paty Biju">
+    <meta property="og:description" content="Site de montra de bijuteria totalmente artesanal em aço.">
+    <meta property="og:image" content="images/logos/logo-OG.png">
+    <meta property="og:url" content="##">
 
     <!-- Css Links: -->
     <link rel="stylesheet" href="styles/all.css">
@@ -18,15 +32,15 @@
     <link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#9f00a7">
     <meta name="theme-color" content="#ffffff">
-    
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">   
 
+    <!-- Título -->
     <title>Paty Biju</title>
 </head>
 
 <body>
-    <!-- Navbar/Header -->
+    <!-- Navbar / Header -->
     <header>
         <!-- _Nav Container -->
         <div class="nav container">
@@ -46,7 +60,7 @@
                 <li>
                     <a href="#biju-conjuntos-page" id="bijuteria-link">Bijuteria</a>
                     <ul class="dropdown">
-                        <li><a href="#biju-conjuntos-page">Conjuntos</a></li>
+                        <li id="conj-dropdown"><a href="#biju-conjuntos-page" >Conjuntos</a></li>
                         <li><a href="pages/biju-pulseiras.html" target="_self" rel="next">Pulseiras</a></li>
                         <li><a href="#">Colares</a></li>
                         <li><a href="#">Brincos</a></li>
@@ -83,7 +97,8 @@
         </div>
     </section>
 
-    <!-- Display dos items de venda: -->
+    <!-- BIJUTERIA: Conjuntos Page -->
+    <!-- _Display dos items de venda -->
     <main class="item-section container" id="biju-conjuntos-page">
         <!-- _Heading -->
         <div class="heading">
@@ -221,14 +236,10 @@
                     <span class="material-symbols-outlined">
                     navigate_before</span>
                 </a>
-                <input type="button" id="load-btn" value="Carregar Mais..." onclick="loadMoreItems()"> 
+                <input type="button" id="load-btn" value="Carregar Mais..."> 
                 <a href="#">
                     <span class="material-symbols-outlined">
                         navigate_next</span>
-                </a>
-                <a href="#">
-                    <span class="material-symbols-outlined">
-                    keyboard_double_arrow_up</span>
                 </a>
         </nav>
     </main>
@@ -282,6 +293,13 @@
         
     </footer>
 
+    <!-- Back Top -->
+    <button id="back-top-btn" title="Go to Top">
+            <span class="material-symbols-outlined">keyboard_double_arrow_up</span>
+    </button>
+
+    <!-- Scripts -->
+    <script src="scripts/back-top.js"></script>
     <script src="scripts/load-more.js"></script>
 </body>
 </html>
