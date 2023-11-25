@@ -135,49 +135,7 @@ i#menu-icon{
 }
 
 
-/* Config. Home: */
-.home{
-    display: flex;
-    align-items: center;
-    background: white url('../images/backgrouns/home-page-background.jpg') no-repeat right bottom / cover;
-    padding: 4rem 0 2rem 4rem;
-    margin: auto;
-    padding-top: 4vh;
-    max-width: 1300px;
-    width: 100vw;
-    height: 90%;
-}
-.home-text h1{
-    font-size: 2.5em;
-    text-transform: uppercase;
-    font-weight: 800;
-}
-.home-text p{
-    font-size: 1.2rem;
-    margin-bottom: 1.2rem; 
-    font-weight: 300;
-
-}
-.home-text span{
-    color: rgb(161, 161, 161);
-}
-/* _Config Button */
-.btn{
-    font-size: 1.4rem;
-    padding: 5px 15px;
-    border-radius: 5px;
-    border: 1px solid var(--cor-linhas);
-    color: black;
-    transition: 0.3s;
-}
-.btn:hover{
-    border-radius: 0;
-    background-color: var(--cor-linhas);
-    transition: 0.3s;
-}
-
-
-/* Config Biju/Conjuntos: */
+/* Config Categotia/subcategoria: */
 .item-section{
     display: flex;
     flex-direction: column;
@@ -270,10 +228,6 @@ height: 70vh;
     padding: 5px;
     border-radius: 50%;
 }
-.nav-pages  a:first-child  span{
-    visibility: hidden;
-}
-    
 .nav-pages a span:hover{
     border: 1px solid rgb(102, 102, 102);
     background-color: rgb(226, 226, 226);
@@ -366,7 +320,6 @@ footer span{
     gap: 1rem;
     grid-area: duvidas;
     padding-left: 10px;
-
 }
 .duvidas input{
     font-size: 1rem;
