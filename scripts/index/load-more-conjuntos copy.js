@@ -2,9 +2,9 @@ let itemsPerPage = 3; // Número de itens por página (Tem de ser acurate)
 let currentPage = 1;  // Página inicial
 
 const itemsData = [
-    { image: 'images/items/colar-azul-teste.jpg', description: 'Aqua Blue', price: '€6,70' },
-    { image: 'images/items/conjunto-dourado-teste.png', description: 'Douro Vivante', price: '€4,20' },
-    { image: 'images/items/pulseira-colorida-teste.jpg', description: 'Rainbow and Flowers', price: '€3,70' }
+    { image: 'https://photos.app.goo.gl/AuhTwvscgvoYCQJn6', description: 'Flor do Mar', price: '€5,50' },
+    { image: '../../images/items/colar-azul-teste.jpg', description: 'Douro Vivante', price: '€4,20' },
+    { image: '../../images/items/pulseira-colorida-teste.jpg', description: 'Rainbow and Flowers', price: '€3,70' }
     // Adicione mais objetos conforme necessário
 ];
 
