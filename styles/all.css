@@ -231,7 +231,7 @@ i#menu-icon{
     border: 1px solid transparent;
 }
 .item-img img:hover{
-    scale: 1.02;
+    scale: 1.01;
     border: 1px solid var(--cor-linhas);
     transition: 0.2s;
 }
@@ -242,6 +242,44 @@ i#menu-icon{
     width: 100%;
     padding: 5px 0;
 }
+
+/*_Popup Image*/
+.popup-image{
+    display: none;
+    position: fixed;
+    background-color: rgba(0, 0, 0, .9);
+    top: 10%;
+    left: 0;
+    width: 100%;
+    height: 90%;
+}
+.popup-image img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 650px;
+    height: 90%;
+    object-fit:contain;
+}
+.popup-image span{
+    display: block;
+    font-size: 3.5rem;
+    color: white;
+    position: absolute;
+    top: -0px;
+    right: 30px;
+    height: fit-content;
+    z-index: 100;
+    text-shadow: 1px 1px 5px black;
+    cursor: pointer;
+}
+@media (max-width:768px){
+    .popup-image img{
+        width: 90%;    
+    }   
+}
+
 
 /* __pub interna */
 .pub-interna{
