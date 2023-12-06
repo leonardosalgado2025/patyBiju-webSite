@@ -1,12 +1,52 @@
+// Variáveis popup image
+const imageContainer = document.querySelectorAll('.item-container img');
+const popup = document.querySelector('.popup-image');
+const popImage = document.querySelector('.popup-image img');
+const close = document.querySelector('.popup-image span')
+const backTop = document.querySelector('#back-top-btn')
+
+
+// Variáveis newImages
+const container = document.querySelector('#load-container')
 let itemsPerPage = 3; // Número de itens por página (Tem de ser acurate)
 let currentPage = 1;  // Página inicial
 
+
+//Artigos (objetos)
 const itemsData = [
-    { image: 'https://photos.app.goo.gl/AuhTwvscgvoYCQJn6', description: 'Flor do Mar', price: '€5,50' },
-    { image: '../../images/items/colar-azul-teste.jpg', description: 'Douro Vivante', price: '€4,20' },
-    { image: '../../images/items/pulseira-colorida-teste.jpg', description: 'Rainbow and Flowers', price: '€3,70' }
+    { image: 'images/items/colar-azul-teste.jpg', description: 'Aqua Blue', price: '€6,70' },
+    { image: 'images/items/conjunto-dourado-teste.png', description: 'Douro Vivante', price: '€4,20' },
+    { image: 'images/items/pulseira-colorida-teste.jpg', description: 'Rainbow and Flowers', price: '€3,70' }
     // Adicione mais objetos conforme necessário
 ];
+
+// Pop-up image:
+//_imagens adicionadas dinâmicamente
+container.addEventListener('click', function (event) {
+    if (event.target.tagName === 'IMG') {
+        popup.style.display = 'block';
+        popImage.src = event.target.getAttribute('src');
+        document.body.style.overflow = 'hidden';
+        backTop.style.visibility = 'hidden';
+    }
+});
+
+//_imagens normais
+imageContainer.forEach(func=>{
+    func.addEventListener('click', ()=>{
+        popup.style.display = 'flex';
+        popImage.src = func.getAttribute('src')
+        document.body.style.overflow = 'hidden';
+        backTop.style.visibility = 'hidden';
+    })
+})
+
+// _botão fechar pop-up
+close.addEventListener('click', ()=>{
+    popup.style.display = 'none';
+    document.body.style.overflow = '';
+    backTop.style.visibility = ''
+})
 
 /* Enevnt Listener */
 document.querySelector('#load-btn').addEventListener('click', loadMoreItems)
@@ -17,7 +57,7 @@ document.querySelector('#load-btn').addEventListener('click', loadMoreItems)
     // Simulação de uma requisição assíncrona para obter mais itens
     // Neste ponto, você pode fazer uma solicitação AJAX para carregar os dados do servidor
     setTimeout(() => {
-        const container = document.getElementById('load-container');
+        
         // Adicione os novos itens ao container
         for (let i = 0; i < itemsPerPage; i++){
                 
@@ -72,6 +112,9 @@ document.querySelector('#load-btn').addEventListener('click', loadMoreItems)
         } 
     }, 500); // Tempo de simulação de uma requisição assíncrona (pode ser substituído por uma solicitação real)
 }
+
+// Carregar 8 item no load da página
+loadMoreItems();
 
 // O número total de itens é a quantidade total de objetos em itemsData
 const totalItems = itemsData.length; 
