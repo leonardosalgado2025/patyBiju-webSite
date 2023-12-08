@@ -107,72 +107,10 @@
             <h4>(colar + brincos) ou (pulseira + brincos)</h4>
         </div>
 
-        <!-- _Artigos: Conjuntos -->
-        <section class="item-container">
-            <article class="item">
-                <div class="item-img">
-                    <img src="https://drive.google.com/uc?export=view&id=1KJ0M6AiwCbPbLA0vZXbnTBdINK9CU4yb"></div>
-                <div class="item-desc">
-                    <h4>Primavera Gold</h4>
-                    <p>€5,50</p>
-                </div>
-            </article>
-            <article class="item">
-                <div class="item-img"><img src="https://drive.google.com/uc?export=view&id=113HRRQ4jVsvJXvVlGX8dOOjdO4DUznEs" alt="Conjunto de penas"></div>
-                <div class="item-desc">
-                    <h4>Pearly Heart</h4>
-                    <p>€5,50</p>
-                </div>
-            </article>
-            <article class="item">
-                <div class="item-img"><img src="https://drive.google.com/uc?export=view&id=1MxupcNp7N2tJKytKSjK1RiKvceCveydL" alt="Conjunto de penas"></div>
-                <div class="item-desc">
-                    <h4>Honey Bear</h4>
-                    <p>€5.50</p>
-                </div>
-            </article>
-            <article class="item">
-                <div class="item-img"><img src="https://drive.google.com/uc?export=view&id=1BMYrkHVxfccITA8y4jQwPknruCZ9VLTl" alt="Conjunto de penas"></div>
-                <div class="item-desc">
-                    <h4>Super Star</h4>
-                    <p>€5,50</p>
-                </div>
-            </article>
-                <article class="item">
-                <div class="item-img"><img src="https://drive.google.com/uc?export=view&id=1G2BnkLEYc7TPHZVdmR1DFsgvbocahU1F" alt="Conjunto de penas"></div>
-                <div class="item-desc">
-                    <h4>Swan Touch</h4>
-                    <p>€5,50</p>
-                </div>
-                </article>
-                <article class="item">
-                <div class="item-img"><img src="https://drive.google.com/uc?export=view&id=1CJFS3KQSxXxZqBJHjknpKziJABiTDY8y" alt="Conjunto de penas"></div>
-                <div class="item-desc">
-                    <h4>Freedom</h4>
-                    <p>€5,50</p>
-                </div>
-                </article>
-                <article class="item">
-                <div class="item-img"><img src="https://drive.google.com/uc?export=view&id=1DdUdsQvZ44Fe1ngzniHuYQLWxhiL11Rf" alt="Conjunto de penas"></div>
-                <div class="item-desc">
-                    <h4>Stellar</h4>
-                    <p>€5,50</p>
-                </div>
-                </article>
-                <article class="item">
-                <div class="item-img"><img src="https://drive.google.com/uc?export=view&id=1AARaGm2Cqz69cvFSIwVH7UKfhYJpagvM" alt="Conjunto de penas"></div>
-                <div class="item-desc">
-                    <h4>Rosa pé</h4>
-                    <p>€5,50</p>
-                </div>
-                </article>
-        </section>
-
-
-        <!-- _Pub Interna -->
+        <!-- _Pub Interna 
         <aside class="pub-interna">
             <img src="images/predefinidas/publi-background.jpg" alt="">
-        </aside>
+        </aside>-->
 
 
         <!-- __Artigos: Conjuntos: Automático -->
@@ -250,26 +188,28 @@
 
     <!-- Imagem pop-up -->
     <div class="popup-image">
-        <span>&times;</span>
-        <img src="https://drive.google.com/uc?export=view&id=1KJ0M6AiwCbPbLA0vZXbnTBdINK9CU4yb">
+        <i id="nav-pop-before" class="material-symbols-outlined nav-pop">navigate_before</i>
+        <span id="close">&times;</span>
+        <img class="fullImage" src="https://drive.google.com/uc?export=view&id=1KJ0M6AiwCbPbLA0vZXbnTBdINK9CU4yb">
             <div class="popup-descricao">
                 <h1>Sobre o Artigo</h1>
                 <ul>
-                    <li><strong>Nome:</strong> Primavera Gold</li>
-                    <li><strong>Descrição:</strong> Conjunto em aço de pétalas de orquídea composto por um colar de pinjente móvel e um par de brincos suaves. Demonstra uma sensação de leveza e primaveril.</li>
-                    <li><strong>Tipo de fio:</strong> fino</li>
+                    <li><strong>Nome: </strong><span class="nome-artigo-pop">&nomeArtigo&</span></li>
+                    <li><strong>Descrição: </strong><span class="desc-artigo-pop">&descArtigo&</span></li>
+                    <li><strong>Preço: </strong><span class="preco-artigo-pop">&precoArtigo&</span></li>
                     <li>
                         <div class="corItem">
-                            <strong>Cor:</strong>
-                            <div class="corDourado"></div>
+                            <strong>Cor:</strong>   
+                            <div id="cor-container"></div>   
                         </div>
                     </li>
                     <li>
-                        <span class="material-symbols-outlined">add_shopping_cart</span>
+                        <i id="shopping-kart"  class="material-symbols-outlined">add_shopping_cart</i>
                     </li>
                 </ul>
             </div>
 
+            <i id="nav-pop-next" class="material-symbols-outlined nav-pop">navigate_next</i>
     </div>
 
     <!-- Scripts -->
