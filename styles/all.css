@@ -258,6 +258,14 @@ i#menu-icon{
     left: 0;
     width: 100%;
     height: 90%;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out;
+}
+.showpop{
+    opacity: 1;
+    transform: translateX(0);
+    
 }
 .popup-image img{
     display: block;
@@ -278,9 +286,14 @@ i#menu-icon{
     z-index: 100;
     text-shadow: 1px 1px 5px black;
     cursor: pointer;
+    transition: text-shadow 0.3s ease-in-out, scale 0.2s ease-in-out;
 }
-/* __Popup descrição */
+#close:hover{
+    text-shadow: 0 0 5px white;
+    scale: 1.5;
+}
 
+/* __Popup descrição */
 .popup-descricao{
     background-color: white;
     width: 30%;
@@ -357,7 +370,7 @@ i.nav-pop:hover{
 }
 
 /* botões de seleção de cor */
-.botao-cor{
+.div-cor{
     cursor: pointer;
 }
 

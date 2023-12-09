@@ -23,14 +23,14 @@ let currentPage = 1;  // Página inicial
 const itemsData = [
 
     /* [bccb00001] - Gold / Fino */
-    {image: 'https://drive.google.com/uc?export=view&id=1KJ0M6AiwCbPbLA0vZXbnTBdINK9CU4yb', name: ' Primavera Gold', description: 'Conjunto em aço de pétalas de orquídea composto por um colar com fio fino e leve e um par de brincos suaves. Demonstra uma sensação de leveza e primaveril.', price: '€5,50', colors: ['gold'], multipleColors:'false'},
+    {image: 'https://images2.imgbox.com/96/f5/GVivjtIN_o.jpg', name: ' Primavera Gold', description: 'Conjunto em aço de pétalas de orquídea composto por um colar com fio fino e leve e um par de brincos suaves. Demonstra uma sensação de leveza e primaveril.', price: '€5,50', colors: ['gold'], inStock: true},
 
+    /* [bccb00002] - Silver-Gold / Fino */
+    {image: 'https://images2.imgbox.com/b1/c7/9jPkJOhm_o.jpg', name: 'Coração Leve', description: 'Conjunto em aço de um coração que suporta uma pérola, composto por um colar com fio fino e um par de brincos apaixonados. Demonstra uma sensação de leveza e primaveril.' , price: '€5,50', colors: ['silver', 'gold'], inStock: true, imagegold: 'https://images2.imgbox.com/06/45/IEyHjlAC_o.jpg'},
 
-    {image: 'https://drive.google.com/uc?export=view&id=1i3OKMaPk8ynbYaIF7PwCnGvs03q0UKWc', description: 'Corações', price: '€5,50', colors: ['silver', 'gold'], multipleColors:'true', imagemgold: 'https://drive.google.com/uc?export=view&id=https:113HRRQ4jVsvJXvVlGX8dOOjdO4DUznEs'},
+    {image: 'https://images2.imgbox.com/24/30/y2PQoeYz_o.jpg', name: 'Bosque Prateado', description: 'Diretamente dos bosques, este conjunto em aço é a combinação perfeita para os amantes de ursos. Composto por um colar com fio grosso e um par de brincos ainda mais fofos.' , price: '€5,50', colors: ['silver'], inStock: true},
 
-    {image: 'images/items/conjunto-dourado-teste.png', description: 'Douro Vivante', price: '€4,20', colors: ['gold', 'silver'] },
-
-    {image: 'images/items/pulseira-colorida-teste.jpg', description: 'Rainbow and Flowers', price: '€3,70', colors: ['silver'] }
+    {image: 'https://images2.imgbox.com/1d/05/yAzPenBv_o.jpg', name: 'Céu Perolado', description: 'Uma fusão entre uma estrela do céu e uma pérula do mar que formam uma aliança pacifica mas destemida. Composto por um colar com fio fino e um par de brincos mais determinados ainda.', price: '€5,50', colors: ['silver'], inStock: true}
     // Adicionar mais objetos conforme necessário
 ];
 
@@ -41,6 +41,27 @@ let totalArtigos = itemsData.length;
 // Pop-up image:
 let itemAtualPopUp = 0;
 
+
+// _Preload Images
+// Função para pré-carregar apenas imagens com um determinado padrão no nome
+function preloadImagesWithPattern(pattern) {
+    itemsData.forEach(item => {
+        // Verificar se o item possui uma imagem com o padrão desejado no nome
+        if (item.image.includes(pattern)) {
+            const imagemPreload = new Image();
+            imagemPreload.src = item.image;
+
+            // Adicione esta imagem pré-carregada ao objeto itemsData
+            item.preloadedImage = imagemPreload;
+        }
+    });
+}
+
+// Chame a função para pré-carregar apenas imagens com um determinado padrão no nome
+preloadImagesWithPattern('gold');
+
+
+
 // _Função adcionar cores
  function addColor(colors){
 
@@ -49,11 +70,10 @@ let itemAtualPopUp = 0;
 
     // __adiconar as cores
     colors.forEach(color =>{
-        const corBtn = document.createElement('button');
-        corBtn.className = `cor-artigo-${color}`
-        corBtn.classList.add('botao-cor')
-        corBtn.id = `id-cor-${color}`
-        corContainer.appendChild(corBtn)
+        const corDiv = document.createElement('div');
+        corDiv.className = `cor-artigo-${color}`
+        corDiv.classList.add('div-cor')
+        corContainer.appendChild(corDiv)
     });
 }
 
@@ -93,17 +113,15 @@ container.addEventListener('click', function (event){
 
 
         // __Exibir o pop-up
-        popup.style.display = 'flex';
+        popup.classList.add('showpop');
         document.body.style.overflow = 'hidden';
-        backTop.style.visibility = 'hidden';
     }
 })
 
 // _Botão fechar pop-up
 close.addEventListener('click', ()=>{
-    popup.style.display = 'none';
+    popup.classList.remove('showpop');
     document.body.style.overflow = '';
-    backTop.style.visibility = ''
 })
 
 
@@ -135,6 +153,60 @@ btnAnterior.addEventListener('click', function () {
 
     exibirArtigoPopUp(itemAtualPopUp);
 });
+
+
+// Event Listener para mudar imagem ao clicar na cor
+corContainer.addEventListener('click', function(event){
+    if (event.target.tagName === 'DIV') {
+        // __obter todas as classes da div clicada
+        const allClasses = event.target.className.split(' ');
+
+        // __filtrar as classes que começam com 'cor-artigo-'
+        const colorClasses = allClasses.filter(className => className.startsWith('cor-artigo-'));
+
+        // __Verificar se há alguma classe de cor
+        if (colorClasses.length > 0) {
+            // ___obter a classe de cor da div clicada
+            const selectedColor = colorClasses[0].split('-')[2];
+            console.log('Selected Color:', selectedColor);
+
+            // ___Verificar se o index é válido
+            if (itemAtualPopUp !== undefined && itemAtualPopUp >= 0 && itemAtualPopUp < totalArtigos) {
+                // ____obter a primeira cor no array de cores do objeto
+                const firstColor = itemsData[itemAtualPopUp].colors[0];
+
+                // ____Verificar se a cor clicada é a primeira no array de cores
+                const isFirstColor = selectedColor === firstColor;
+                if (isFirstColor) {
+                    console.log('Reseting to original image...');
+
+                    // _____resetar para a imagem original
+                    popImage.src = itemsData[itemAtualPopUp].image;
+
+                } else {
+                    // _____construir o nome da característica da imagem correspondente
+                    const imageFeature = `image${selectedColor ? selectedColor.toLowerCase() : ''}`;
+                    console.log('Image Feature:', imageFeature);
+
+                    // _____Verificar se a cor selecionada se econtra no array
+                    if (itemsData[itemAtualPopUp] && imageFeature in itemsData[itemAtualPopUp]) {
+                        console.log('Updating image...');
+                        
+                        // ______atualizar a imagem para a versão de cor correspondente
+                        popImage.src = itemsData[itemAtualPopUp][imageFeature];   
+
+                    } else {
+                        console.log(`Image feature ${imageFeature} not found in the object. Keepping the current image.`)
+                    }
+                }
+            } else {
+                console.log('Invalid index:', itemAtualPopUp);
+            }
+        } else {
+            console.log('Nenhuma classe de cor encontrada na div clicada');
+        }
+    }
+})
 
 
 // Carregar Imagens:
