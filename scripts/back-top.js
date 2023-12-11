@@ -3,6 +3,7 @@ const biju = document.querySelector('#bijuteria-link')
 
 /* Function: Rolar para o topo  */
 function scrollToTop(){
+
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -35,4 +36,4 @@ window.addEventListener('scroll', function(){
 })
 
 /* Event Listener (Click) */
-document.querySelector('#back-top-btn').addEventListener('click', scrollToTop)
+document.querySelector('#back-top-btn').addEventListener('click', scrollToTop);
