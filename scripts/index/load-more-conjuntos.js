@@ -394,8 +394,19 @@ container.addEventListener('click', function (event){
     }
 })
 
-// _Botão fechar pop-up
+// _Fechar pop-up
+// __Botão fechar
 close.addEventListener('click', ()=>{
+    popup.classList.remove('showpop');
+    document.body.style.overflow = '';
+
+    // __ativar "back-top-btn"
+    // ___ocultar "back-top-btn"
+    document.querySelector('#back-top-btn').style.visibility = 'visible';
+})
+
+// __Fechar pop-up home
+document.querySelector('#home-link').addEventListener('click', () => {
     popup.classList.remove('showpop');
     document.body.style.overflow = '';
 
