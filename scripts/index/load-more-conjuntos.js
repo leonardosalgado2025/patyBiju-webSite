@@ -15,7 +15,7 @@ const btnSeguinte = document.querySelector('#nav-pop-next');
 
 // Variáveis Carregar Imagens:
 const container = document.querySelector('#load-container');
-let itemsPerPage = 4; // Número de itens por página (Tem de ser acurate)
+let itemsPerPage = 8; // Número de itens por página (Tem de ser acurate)
 let currentPage = 1;  // Página inicial
 let itemsLoaded = [];
 
@@ -25,97 +25,305 @@ const itemsData = [
 
     
     { // [bccb00001] - Gold / Fino 
-        image: 'https://images2.imgbox.com/96/f5/GVivjtIN_o.jpg', 
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00001]g.jpg', 
         name: ' Primavera Gold', 
         description: 'Conjunto em aço de pétalas de orquídea composto por um colar com fio fino e leve e um par de brincos suaves. Demonstra uma sensação de leveza e primaveril.', 
         price: '€5,50', 
         colors: ['gold'], 
-        itemCode: '[bccb00001]s',
-        inStock: true
+        sku: '[bccb00001]g',
+        urlShopify: ''
     },
     
     { // [bccb00002] - Silver-Gold / Fino   
-        image: 'https://images2.imgbox.com/b1/c7/9jPkJOhm_o.jpg',
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00002]s.jpg',
         name: 'Coração Leve',
         description: 'Conjunto em aço de um coração que suporta uma pérola, composto por um colar com fio fino e um par de brincos apaixonados. Demonstra uma sensação de leveza e primaveril.',
         price: '€5,50',
         colors: ['silver', 'gold'],
-        itemCode: '[bccb00002]',
-        imagegold: 'https://images2.imgbox.com/06/45/IEyHjlAC_o.jpg',
-        inStock: true
+        sku: '[bccb00002]s',
+        imagegold: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00002]g.jpg',
+        urlShopify: ''
     },
 
     { // [bccb00003] - Silver / Grosso
-        image: 'https://images2.imgbox.com/24/30/y2PQoeYz_o.jpg', 
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00003]s.jpg', 
         name: 'Bosque Prateado', 
         description: 'Diretamente dos bosques, este conjunto em aço é a combinação perfeita para os amantes de ursos. Composto por um colar com fio grosso e um par de brincos ainda mais fofos.',
         price: '€5,50',
         colors: ['silver'],
-        itemCode: '[bccb00003]',
-        inStock: true
+        sku: '[bccb00003]s',
+        urlShopify: ''
     },
 
     {  // [bccb00004] - Silver / Fino
-        image: 'https://images2.imgbox.com/1d/05/yAzPenBv_o.jpg', 
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00004]s.jpg', 
         name: 'Céu Perolado',
         description: 'Uma fusão entre uma estrela do céu e uma pérula do mar que formam uma aliança pacifica mas destemida. Composto por um colar com fio fino e um par de brincos mais determinados ainda.',
         price: '€5,50',
         colors: ['silver'],
-        itemCode: '[bccb00004]',
-        inStock: true
+        sku: '[bccb00004]s',
+        urlShopify: '',
     },
 
-    { // [bccb00005] - silver / Fino
-        image: 'https://images2.imgbox.com/3e/23/gKeFY8si_o.jpg',
+    { // [bccb00005] - Silver / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00005]s.jpg',
         name: 'Silver Swan',
-        description: 'Diretamento de um lago distante, diretamente para o seu pescoço. Composto por um colar com fio fino e um par de brincos.',
+        description: 'Diretamente de um lago distante para o seu pescoço. Composto por um colar com fio fino e um par de brincos.',
         price: '€5,50',
         colors: ['silver'],
-        itemCode: '[bccb00005]',
-        inStock: true
+        sku: '[bccb00005]s',
+        urlShopify: '',
     },
 
-    {  // [bccb00006] - silver / Fino
-        image: 'https://images2.imgbox.com/87/48/JSdRkkvx_o.jpg',
+    {  // [bccb00006] - Silver / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00006]s.jpg',
         name: 'Freedom',
         description: 'Livre como uma libelinha a voar com o vento. Composto por um colar com fio fino e um par de brincos mais determinados ainda.',
         price: '€5,50',
         colors: ['silver'],
-        itemCode: '[bccb00006]',
-        inStock: true
+        sku: '[bccb00006]s',
+        urlShopify: '',
     },   
     
-    {  // [bccb00007] - silver / Fino
-        image: 'https://images2.imgbox.com/b3/8c/O66VUjRF_o.jpg',
+    {  // [bccb00007] - Silver / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00007]s.jpg',
         name: 'Super Star',
         description: 'Brilhante como uma estrela, indicado para pessoas quem gosta de brilhar também. Composto por um colar com fio fino e um par de brincos ainda mais brilhantes.',
         price: '€5,50',
         colors: ['silver'],
-        itemCode: '[bccb00007]',
-        inStock: true
+        sku: '[bccb00007]s',
+        urlShopify: '',
     },
 
-    {  // [bccb00008] - silver / Fino
-        image: 'https://images2.imgbox.com/d2/ea/seTlxaGb_o.jpg',
+    {  // [bccb00008] - Silver / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00008]s.jpg',
         name: 'Flying Light',
         description: 'Os flamingos são mensageiros da luz e guiam os céus, segundo dizem. Composto por um colar com fio fino e um par de brincos.', 
-        rice: '€5,50',
+        price: '€5,50',
         colors: ['silver'],
-        itemCode: '[bccb00008]',
-        inStock: true
+        sku: '[bccb00008]s',
+        urlShopify: '',
     },
 
-    {  // [bccb00009] - gold / Fino
-        image: 'https://images2.imgbox.com/12/12/S4ozR4L3_o.jpg',
+    {  // [bccb00009] - Gold / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00009]g.jpg',
         name: 'Timeless',
         description: 'Sem tempo? Impossível, com este colar em aço dourado o tempo parece "infinito". Composto por um colar com fio fino e um par de brincos que quase são uma máquina do tempo.',
         price: '€5,50',
         colors: ['gold'],
-        itemCode: '[bccb00009]',
-        inStock: true
+        sku: '[bccb00009]g',
+        urlShopify: '',
     },
 
-    // Adicionar mais objetos conforme necessário
+    {  // [bccb00010] - Silver / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00010]s.jpg',
+        name: 'Always',
+        description: 'Em todo o lado, a todo o momento. Este conjunto em aço é um mistério do tempo e do espaço. Composto por um colar com fio fino e um par de brincos misteriosos.',
+        price: '€5,50',
+        colors: ['silver'],
+        sku: '[bccb00010]s',
+        urlShopify: '',
+    },
+
+    {  // [bccb00011] - Silver / Grosso
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00011]s.jpg',
+        name: 'Sem Saída',
+        description: 'Sem saída? Como assim? Pode ser que este conjunto em aço consiga responder. Composto por um colar com fio grosso e um par de brincos apaixonados.',
+        price: '€5,50',
+        colors: ['silver'],
+        sku: '[bccb00011]s',
+        urlShopify: '',
+    },
+
+    {  // [bccb00012] - Silver / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00012]s.jpg',
+        name: 'Ursonauta',
+        description: 'Um urso ou um astronauta? Os dois! Vá daqui até à lua com este conjunto em aço. Composto por um colar com fio fino e um par de brincos de duas luas, mas não é só uma?.',
+        price: '€5,50',
+        colors: ['silver'],
+        sku: '[bccb00012]s',
+        urlShopify: '',
+    },
+
+    {  // [bccb00013] - Silver / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00013]s.jpg',
+        name: 'Shine Bright',
+        description: 'Para aqueles com um coração brilhante, este conjunto em aço é um belo presente para os apaixonados. Composto por um colar com fio fino e um par de brincos.',
+        price: '€5,50',
+        colors: ['silver'],
+        sku: '[bccb00013]s',
+        urlShopify: '',
+    },
+
+    {  // [bccb00014] - Gold / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00014]g.jpg',
+        name: 'A Galope',
+        description: 'Para os amantes da arte equestre, ou simplesmente de cavalos, este conjunto em aço não precisa de ferradura. Composto por um colar com fio fino e um par de brincos equinos.',
+        price: '€5,50',
+        colors: ['gold'],
+        sku: '[bccb00014]g',
+        urlShopify: '',
+    },
+
+    {  // [bccb00015] - Silver / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00015]s.jpg',
+        name: 'Clave de Sol',
+        description: 'Para rockeiros, metaleiros, clássicos, amantes de jazz, este conjunto em aço adequa-se a todos os gostos musicais. Composto por um colar com fio fino e um par de brincos solistas.',
+        price: '€5,50',
+        colors: ['silver'],
+        sku: '[bccb00015]s',
+        urlShopify: '',
+    },
+
+    {  // [bccb00016] - Silver / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00016]s.jpg',
+        name: 'Under the Sea',
+        description: 'Este conjunto em aço vem diretamente do fundo do mar até ao seu pescoço. Composto por um colar com fio fino e um par de brincos que chamam o verão.',
+        price: '€5,50',
+        colors: ['silver'],
+        sku: '[bccb00016]s',
+        urlShopify: '',
+    },
+
+    {  // [bccb00017] - Silver / Grosso
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00017]s.jpg',
+        name: 'Ritmo brilhante',
+        description: 'Este conjunto em aço é perfeito para os mais os músicos que gostam de brilhar. Composto por um colar com fio grosso e um par de brincos brilhantes.',
+        price: '€5,50',
+        colors: ['silver'],
+        sku: '[bccb00017]s',
+        urlShopify: '',
+    },
+
+    {  // [bccb00018] - Silver / Grosso
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00018]s.jpg',
+        name: 'Heaven',
+        description: 'Este conjunto em aço cabe no pescoço de qualquer cristão. Composto por um colar com fio grosso e um par de brincos que chamam o verão.',
+        price: '€5,50',
+        colors: ['silver'],
+        sku: '[bccb00018]s',
+        urlShopify: '',
+    },
+
+    {  // [bccb00019] - Silver / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00019]s.jpg',
+        name: 'Girassol',
+        description: 'Quem não gosta de girassois? Mostra que és um amante destas lindas flores. Composto por um colar com fio fino e um par de brincos que giram com o Sol.',
+        price: '€5,50',
+        colors: ['silver'],
+        sku: '[bccb00019]s',
+        urlShopify: '',
+    },
+
+    {  // [bccb00020] - Silver / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00020]s.jpg',
+        name: 'Cloud',
+        description: 'Para que está sempre nas nuvens, ou apenas gosta de ver formatos nelas, este conjunto em aço é o mais indicado. Composto por um colar com fio fino e um par de brincos com previsão de chuva.',
+        price: '€5,50',
+        colors: ['silver'],
+        sku: '[bccb00020]s',
+        urlShopify: '',
+    },
+
+    {  // [bccb00021] - Gold / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00021]g.jpg',
+        name: 'Vida',
+        description: 'Só vivemos uma vez, então é importante aproveitarmos a vida ao máximo. Este conjunto em aço é indicado para os amantes da vida ou médicos. Composto por um colar com fio fino e um par de brincos a 80bpm.',
+        price: '€5,50',
+        colors: ['gold'],
+        sku: '[bccb00021]g',
+        urlShopify: '',
+    },
+
+    {  // [bccb00022] - Silver / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00022]s.jpg',
+        name: 'Lucky Love',
+        description: 'Será um amuleto da sorte no amor? Não sei, mas este conjunto em aço pode simbolizar o que o coração quiser. Composto por um colar com fio fino e um par de brincos.',
+        price: '€5,50',
+        colors: ['silver'],
+        sku: '[bccb00022]s',
+        urlShopify: '',
+    },
+
+    {  // [bccb00023] - Silver / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00023]s.jpg',
+        name: 'Malmequer',
+        description: 'Já jogaste ao malmequer? Eu também não mas este conjunto em aço não deixa as pétalas cair, por isso começa a contar por onde quiseres. Composto por um colar com fio fino e um par de brincos.',
+        price: '€5,50',
+        colors: ['silver'],
+        sku: '[bccb00023]s',
+        urlShopify: '',
+    },
+
+    {  // [bccb00024] - Silver / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00024]s.jpg',
+        name: 'Soul Mates',
+        description: 'Este conjunto em aço é certamente o mais apropriado para os casais apaixonados e uma excelente prenda. Composto por um colar com fio fino e um par de brincos calorosos.',
+        price: '€5,50',
+        colors: ['silver'],
+        sku: '[bccb00024]s',
+        urlShopify: '',
+    },
+
+    {  // [bccb00025] - Gold / Grosso
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00025]g.jpg',
+        name: 'Daisy',
+        description: 'Gostas de margaridas? Então este conjunto em aço é perfeito para ti e não precisas de o regar. Composto por um colar com fio grosso e um par de brincos florais.',
+        price: '€5,50',
+        colors: ['gold'],
+        sku: '[bccb00025]g',
+        urlShopify: '',
+    },
+
+    {  // [bccb00026] - Silver / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00026]s.jpg',
+        name: 'Moon Light',
+        description: 'És um amante da noite? Então este conjunto em aço é perfeito para ti . Composto por um colar brilhante com fio fino e um par de brincos aluados.',
+        price: '€5,50',
+        colors: ['silver'],
+        sku: '[bccb00026]s',
+        urlShopify: '',
+    },
+
+    {  // [bccb00027] - Silver / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00027]s.jpg',
+        name: 'Renascer',
+        description: 'Este conjunto em aço pode simbolizar várias fazer: amadurecimento, nascimento, aprendizagem, recomeço, tu decides! Composto por um colar com fio fino e um par de brincos filosóficos.',
+        price: '€5,50',
+        colors: ['silver'],
+        sku: '[bccb00027]s',
+        urlShopify: '',
+    },
+
+    {  // [bccb00028] - Silver / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00028]s.jpg',
+        name: 'Lucky Charm',
+        description: 'Com este conjunto em aço, escusas de procurar trevos de quatro folhas. Composto por um colar com fio fino e um par de brincos perolados.',
+        price: '€5,50',
+        colors: ['silver'],
+        sku: '[bccb00028]s',
+        urlShopify: '',
+    },
+
+    {  // [bccb00029] - SGold / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00029]g.jpg',
+        name: 'União',
+        description: 'Quem não ama a sua família? Com este conjunto em aço podes mostrar isso a toda a gente. Composto por um colar com fio fino e um par de brincos reunidos.',
+        price: '€5,50',
+        colors: ['silver'],
+        sku: '[bccb00029]g',
+        urlShopify: '',
+    },
+
+    {  // [bccb00030] - Silver / Fino
+        image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00030]s.jpg',
+        name: 'Novo Começo',
+        description: 'Segundo dizem, os golfinhos simbolizam um "Novo Começo", então podes recomeçar com este conjunto em aço. Composto por um colar com fio fino e um par de brincos.',
+        price: '€5,50',
+        colors: ['silver'],
+        sku: '[bccb00030]s',
+        urlShopify: '',
+    },
 ];
 
 // Número total de items na secção "Conjuntos-colar-brincos"

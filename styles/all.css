@@ -37,12 +37,15 @@ img{
 
 /* Config Header: */
 header{
-    display: block;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-items: left;
     position: fixed;
     background-color: white;
     border-bottom: 1px solid var(--cor-linhas);
     width: 100%;
-    height: 10%;
+    height: 12%;
     min-height: 70px;
     z-index: 100;
 }
@@ -61,6 +64,7 @@ i#menu-icon{
 /* _general */
 .nav{
     display: flex;
+    flex-grow: 2;
     align-items: center;
     justify-content: flex-start;
     gap: 20%;
@@ -124,6 +128,7 @@ i#menu-icon{
 
 /* __logo */
 .logo-container{
+    flex-grow: 1;
     max-width: 120px;
     height: 90%;
     overflow: hidden;
@@ -132,6 +137,7 @@ i#menu-icon{
     flex-shrink: 0;
     object-fit: fill;
 }
+
 
 
 /* Config. Home: */
@@ -144,7 +150,7 @@ i#menu-icon{
     padding-top: 4vh;
     max-width: 1300px;
     width: 100vw;
-    height: 90%;
+    height: 100%;
 }
 .home-text h1{
     font-size: 2.5em;
@@ -257,7 +263,7 @@ i#menu-icon{
     top: 10%;
     left: 0;
     width: 100%;
-    height: 90%;
+    height: calc(100%-80px);
     opacity: 0;
     transform: translateX(-100%);
     transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out;
@@ -270,7 +276,7 @@ i#menu-icon{
 .popup-image img{
     display: block;
     width: fit-content;
-    height: 90%;
+    height: 88%;
     object-fit:contain;
     border-radius: 10px 0 10px 10px;
 }
@@ -319,14 +325,14 @@ i#menu-icon{
     width: 80%;
     text-align: center;
     font-size: 2.2rem;
-    background-color: rgb(189, 148, 2);
+    background-color: #FCE477;
     border-radius: 10px;
     cursor: pointer;
     border: 1.5px solid transparent;
 }
 .popup-descricao li #shopping-kart:hover{
     border: 1.5px solid black;
-    background-color: rgba(189, 148, 2, 0.572);
+    background-color: #fce477a5;
 }
 /* ___Cor do artigo */
 .corItem{
