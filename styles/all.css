@@ -402,12 +402,18 @@ i.nav-pop:hover{
 
 /* __pub interna */
 .pub-interna{
-display: block;
-background: black;
-margin:  3rem auto 0 auto;
-width: 98.5%;
-height: 70vh;  
+    display: none;
+    background: black;
+    padding: 0;
+    margin:  3rem auto 0 auto;
+    width: 98.5%;
+    height: 70vh; 
 }
+.pub-interna img {
+    object-fit: cover;
+    width: 100%;
+}
+
 
 /* Nav Pages: */
 .nav-pages{

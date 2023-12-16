@@ -17,7 +17,8 @@ const btnSeguinte = document.querySelector('#nav-pop-next');
 const container = document.querySelector('#load-container');
 let itemsPerPage = 8; // Número de itens por página (Tem de ser acurate)
 let currentPage = 1;  // Página inicial
-let itemsLoaded = [];
+let itemsLoaded = []; // Imagens carregadas
+const loadBtn = document.querySelector('#load-btn');
 
 
 // Artigos (objetos):
@@ -37,7 +38,7 @@ const itemsData = [
     { // [bccb00002] - Silver-Gold / Fino   
         image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00002]s.jpg',
         name: 'Coração Leve',
-        description: 'Conjunto em aço de um coração que suporta uma pérola, composto por um colar com fio fino e um par de brincos apaixonados. Demonstra uma sensação de leveza e primaveril.',
+        description: 'Conjunto em aço de um coração que suporta uma pérola, composto por um colar com fio fino e um par de brincos apaixonados.',
         price: '€5,50',
         colors: ['silver', 'gold'],
         sku: '[bccb00002]s',
@@ -138,7 +139,7 @@ const itemsData = [
     {  // [bccb00012] - Silver / Fino
         image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00012]s.jpg',
         name: 'Ursonauta',
-        description: 'Um urso ou um astronauta? Os dois! Vá daqui até à lua com este conjunto em aço. Composto por um colar com fio fino e um par de brincos de duas luas, mas não é só uma?.',
+        description: 'Um urso ou um astronauta? Os dois! Vá daqui até à lua com este conjunto em aço. Composto por um colar com fio fino e um par de brincos de duas luas, mas não é só uma?',
         price: '€5,50',
         colors: ['silver'],
         sku: '[bccb00012]s',
@@ -198,7 +199,7 @@ const itemsData = [
     {  // [bccb00018] - Silver / Grosso
         image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00018]s.jpg',
         name: 'Heaven',
-        description: 'Este conjunto em aço cabe no pescoço de qualquer cristão. Composto por um colar com fio grosso e um par de brincos que chamam o verão.',
+        description: 'Este conjunto em aço cabe no pescoço de qualquer cristão. Composto por um colar com fio grosso e um par de brincos.',
         price: '€5,50',
         colors: ['silver'],
         sku: '[bccb00018]s',
@@ -208,7 +209,7 @@ const itemsData = [
     {  // [bccb00019] - Silver / Fino
         image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00019]s.jpg',
         name: 'Girassol',
-        description: 'Quem não gosta de girassois? Mostra que és um amante destas lindas flores. Composto por um colar com fio fino e um par de brincos que giram com o Sol.',
+        description: 'Quem não gosta de girassóis? Mostra que és um amante destas lindas flores. Composto por um colar com fio fino e um par de brincos que giram com o Sol.',
         price: '€5,50',
         colors: ['silver'],
         sku: '[bccb00019]s',
@@ -332,6 +333,8 @@ let totalArtigos = itemsData.length;
 
 // Pop-up image:
 let itemAtualPopUp = 0;
+
+
 
 
 // _Função adcionar cores
@@ -502,7 +505,7 @@ corContainer.addEventListener('click', function(event){
 
 // Carregar Imagens:
 // _event listener para o botão "Carragar Mais"
-document.querySelector('#load-btn').addEventListener('click', loadMoreItems);
+loadBtn.addEventListener('click', loadMoreItems);
 
 // _carregar items no load da página
 loadMoreItems ();
@@ -575,6 +578,12 @@ function loadMoreItems () {
                 // ___adicionar classe caso currentPage > 1
                 if ( currentPage >= 2 ) {
                     newItem.classList.add('dinamicImage');
+                }
+
+                console.log('Current Page: ', currentPage)
+
+                if (  currentPage == 3 ) {
+                    abilitarPubInterna();
                 }
             }
         }
