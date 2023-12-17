@@ -24,7 +24,6 @@ const loadBtn = document.querySelector('#load-btn');
 // Artigos (objetos):
 const itemsData = [
 
-    
     { // [bccb00001] - Gold / Fino 
         image: '../../images/items/bijuteria/conjuntos-colar-brincos/[bccb00001]g.jpg', 
         name: ' Primavera Gold', 
@@ -335,16 +334,14 @@ let totalArtigos = itemsData.length;
 let itemAtualPopUp = 0;
 
 
-
-
-// _Função adcionar cores
+// Função adcionar cores:
  function addColor(colors){
 
     // __limpar conteúdo anterior
     corContainer.innerHTML = '';
 
     // __adiconar as cores
-    colors.forEach(color =>{
+    colors.forEach ( color => {
         const corDiv = document.createElement('div');
         corDiv.className = `cor-artigo-${color}`
         corDiv.classList.add('div-cor')
@@ -352,8 +349,9 @@ let itemAtualPopUp = 0;
     });
 }
 
-// _Exibir o artigo na janela pop-up com base no indice:
-function exibirArtigoPopUp(index){
+// Exibir o artigo na janela "pop-up" com base no indice:
+function exibirArtigoPopUp ( index ) {
+
     nomeArtigo.textContent = itemsData[index].name;
     descArtigo.textContent = itemsData[index].description;
     precoArtigo.textContent = itemsData[index].price
@@ -364,24 +362,145 @@ function exibirArtigoPopUp(index){
 
     // __Ocultar botões:
     // ___esconder o botão "anterior" na primeira página
-    btnAnterior.style.display = (index == 0 ) ? 'none' : 'inline-block';
+    btnAnterior.style.display = ( index == 0 ) ? 'none' : 'inline-block';
 
     // ___esconder o botão "seguinte"
-    btnSeguinte.style.display = (index == totalArtigos - 1 ) ? 'none' : 'inline-block';
+    btnSeguinte.style.display = ( index == totalArtigos - 1 ) ? 'none' : 'inline-block';
 }
 
-// _EventListener de click na imagem
-container.addEventListener('click', function (event){
+
+// _Função para criar os elementos necessários
+function loadMoreItems () {
+
+    // _calcular o index inicial para carregar novos items
+    const startIndex = (currentPage - 1) * itemsPerPage;
+
+    // _calcular o index final para carregar novos items
+    const endIndex = startIndex + itemsPerPage;
+
+    // neste ponto, pede ser feita uma solicitação AJAX para carregar os dados do servidor
+    setTimeout(() => {
+     
+    // Verificar se há mais items a serem carregados
+    if ( startIndex < totalArtigos ) {
+        // __adicionar os novos itens ao "container"
+        for ( let i = startIndex; i < endIndex && i < totalArtigos; i++ ){
+
+            // ___Verificar se o item já fo carregado
+            if ( !Array.isArray(itemsLoaded) || !itemsLoaded.includes(i) ) {  
+                
+                // ____marcar o item como carregado
+                if ( Array.isArray(itemsLoaded) ) {
+                    itemsLoaded.push(i);
+                }
+
+                // ___criar o artigo "item"
+                const newItem = document.createElement('article');
+                newItem.className = 'item';
+                newItem.dataset.index = i;
+
+                // ___criar div para a imagem
+                const imageDiv = document.createElement('div');
+                imageDiv.className = 'item-img';
+            
+                // ___criar imagem
+                const newImage = document.createElement('img');
+                newImage.src = itemsData[i].image;
+                newImage.alt = `Imagem ${i + (currentPage - 1) * itemsPerPage + 1}`;
+            
+                // ___adicionar imagem à div
+                imageDiv.appendChild(newImage);
+
+                // ___adicionar div da imagem ao item
+                newItem.appendChild(imageDiv);
+
+                // ___criar div texto
+                const textDiv = document.createElement('div');
+                textDiv.className = 'item-desc';
+
+                // ___criar titulo
+                const newTitle = document.createElement('h4');
+                newTitle.textContent = itemsData[i].name;
+                textDiv.appendChild(newTitle);
+
+                // ___criar preço
+                const newPrice = document.createElement('p');
+                newPrice.textContent = itemsData[i].price;
+                textDiv.appendChild(newPrice);
+
+                // ___adicionar a textDiv ao newItem
+                newItem.appendChild(textDiv);
+            
+                // ___adiconar todos os elementos criados ao "container"
+                container.appendChild(newItem);
+
+                // ___adicionar classe caso currentPage > 1
+                if ( currentPage >= 2 ) {
+                    newItem.classList.add('dinamicImage');
+                }
+            }
+        }
+    }
+        // __se não houver mais itens para carregar, ocultar o botão
+        if ( startIndex + itemsPerPage >= totalArtigos ) {
+            document.getElementById('load-btn').style.display = 'none';
+        } 
+
+    currentPage++
+
+    }, 500); // tempo de simulação de uma requisição assíncrona (pode ser substituído por uma solicitação real)
+}
+
+
+// _Função para resetar o LoadMoreItems quando o "back-top-btn" for precionado
+function removeImagesBackTop () {
+
+    setTimeout ( () => {
+        // __Verificar se o item possui a tag "dinamicImage"
+        const children = Array.from(container.children);
+
+        children.forEach(item => { 
+            if ( item.classList.contains('dinamicImage') ) {
+                container.removeChild(item);
+            }
+        })
+
+        // __atualizar "itesmLoaded"
+        const numeroElementosRemover = itemsLoaded.length - itemsPerPage;
+        const indexInicial = itemsPerPage ;
+
+        itemsLoaded.splice(indexInicial, numeroElementosRemover);
+        currentPage = 2;
+
+        // __exibir "back-top-btn"
+        document.querySelector('#load-btn').style.display = 'block';
+    }, 600);
+}
+
+
+// _carregar items no load da página
+loadMoreItems ();
+
+
+// Carregar Imagens:
+// _event listener para o botão "Carragar Mais"
+loadBtn.addEventListener('click', loadMoreItems);
+
+
+// Image Pop-up:
+// EventListener de click na imagem
+container.addEventListener('click', function ( event ){
 
     const clickedItem = event.target.closest('.item');
-    if (clickedItem) {
+
+    if ( clickedItem ) {
 
         //__obter index da imagem clicada
         const index = clickedItem.dataset.index;
-        console.log('Index:',index)
 
         // __Verificar se o index é válido
-        if (index >= 0 && index < totalArtigos){
+        if ( index >= 0 && index < totalArtigos ){
+
             // ___exibir o pop-up com bas no indice da imagem clicada
             itemAtualPopUp = index;
             exibirArtigoPopUp(itemAtualPopUp);
@@ -399,7 +518,8 @@ container.addEventListener('click', function (event){
 
 // _Fechar pop-up
 // __Botão fechar
-close.addEventListener('click', ()=>{
+close.addEventListener('click', () => {
+
     popup.classList.remove('showpop');
     document.body.style.overflow = '';
 
@@ -410,6 +530,7 @@ close.addEventListener('click', ()=>{
 
 // __Fechar pop-up home
 document.querySelector('#home-link').addEventListener('click', () => {
+
     popup.classList.remove('showpop');
     document.body.style.overflow = '';
 
@@ -419,10 +540,10 @@ document.querySelector('#home-link').addEventListener('click', () => {
 })
 
 
-// Nav Artigos:
-// _Botão seguinte
+// _Nav Artigos:
+// __botão seguinte
 btnSeguinte.addEventListener('click', function () {
-    if (itemAtualPopUp < itemsData.length - 1) {
+    if ( itemAtualPopUp < itemsData.length - 1 ) {
         itemAtualPopUp++;
     } else {
         // Voltar ao primeiro item se estiver no último
@@ -432,16 +553,16 @@ btnSeguinte.addEventListener('click', function () {
     exibirArtigoPopUp(itemAtualPopUp);
 });
 
-// _Botão anterior
+// __Botão anterior
 btnAnterior.addEventListener('click', function () {
-    if (itemAtualPopUp > 0) {
+    if ( itemAtualPopUp > 0 ) {
         itemAtualPopUp--;
     } else {
         // Voltar ao último item se estiver no primeiro
         itemAtualPopUp = itemsData.length - 1;
     }
 
-    if(itemAtualPopUp == 0){
+    if( itemAtualPopUp == 0 ){
         document.querySelector('#nav-pop-before').style.display = 'none'
     }
 
@@ -449,9 +570,9 @@ btnAnterior.addEventListener('click', function () {
 });
 
 
-// Event Listener para mudar imagem ao clicar na cor
+// _Event Listener para mudar imagem ao clicar na cor
 corContainer.addEventListener('click', function(event){
-    if (event.target.tagName === 'DIV') {
+    if ( event.target.tagName === 'DIV' ) {
         // __obter todas as classes da div clicada
         const allClasses = event.target.className.split(' ');
 
@@ -502,132 +623,10 @@ corContainer.addEventListener('click', function(event){
     }
 })
 
-
-// Carregar Imagens:
-// _event listener para o botão "Carragar Mais"
-loadBtn.addEventListener('click', loadMoreItems);
-
-// _carregar items no load da página
-loadMoreItems ();
-
-// _Função para criar os elementos necessários
-function loadMoreItems () {
-
-    // _calcular o index inicial para carregar novos items
-    const startIndex = (currentPage - 1) * itemsPerPage;
-
-    // _calcular o index final para carregar novos items
-    const endIndex = startIndex + itemsPerPage;
-
-    // neste ponto, pede ser feita uma solicitação AJAX para carregar os dados do servidor
-    setTimeout(() => {
-     
-    // Verificar se há mais items a serem carregados
-    if (startIndex < totalArtigos) {
-        // __adicionar os novos itens ao "container"
-        for (let i = startIndex; i < endIndex && i < totalArtigos; i++){
-
-            // ___Verificar se o item já fo carregado
-            if ( !Array.isArray(itemsLoaded) || !itemsLoaded.includes(i) ) {  
-                
-                // ____marcar o item como carregado
-                if ( Array.isArray(itemsLoaded)) {
-                    itemsLoaded.push(i);
-                }
-
-                // ___criar o artigo "item"
-                const newItem = document.createElement('article');
-                newItem.className = 'item';
-                newItem.dataset.index = i;
-
-                // ___criar div para a imagem
-                const imageDiv = document.createElement('div');
-                imageDiv.className = 'item-img';
-            
-                // ___criar imagem
-                const newImage = document.createElement('img');
-                newImage.src = itemsData[i].image;
-                newImage.alt = `Imagem ${i + (currentPage - 1) * itemsPerPage + 1}`;
-            
-                // ___adicionar imagem à div
-                imageDiv.appendChild(newImage);
-
-                // ___adicionar div da imagem ao item
-                newItem.appendChild(imageDiv);
-
-                // ___criar div texto
-                const textDiv = document.createElement('div');
-                textDiv.className = 'item-desc';
-
-                // ___criar titulo
-                const newTitle = document.createElement('h4');
-                newTitle.textContent = itemsData[i].name;
-                textDiv.appendChild(newTitle);
-
-                // ___criar preço
-                const newPrice = document.createElement('p');
-                newPrice.textContent = itemsData[i].price;
-                textDiv.appendChild(newPrice);
-
-                // ___adicionar a textDiv ao newItem
-                newItem.appendChild(textDiv);
-            
-                // ___adiconar todos os elementos criados ao "container"
-                container.appendChild(newItem);
-
-                // ___adicionar classe caso currentPage > 1
-                if ( currentPage >= 2 ) {
-                    newItem.classList.add('dinamicImage');
-                }
-
-                console.log('Current Page: ', currentPage)
-
-                if (  currentPage == 3 ) {
-                    abilitarPubInterna();
-                }
-            }
-        }
-    }
-        // __se não houver mais itens para carregar, ocultar o botão
-        if ( startIndex + itemsPerPage >= totalArtigos) {
-            document.getElementById('load-btn').style.display = 'none';
-        } 
-
-    currentPage++
-
-    }, 500); // tempo de simulação de uma requisição assíncrona (pode ser substituído por uma solicitação real)
-}
-
-
-// Remover imagens carregadas dinâmicamente ao precionar o "back-top-btn"
-// _envet listener 
+// _Remover imagens carregadas dinâmicamente ao precionar o "back-top-btn"
+// __envet listener 
 document.querySelector('#back-top-btn').addEventListener('click', () => {
     if ( itemsLoaded.length > itemsPerPage ) {
         removeImagesBackTop();
     }
 });
-
-// _Função para resetar o LoadMoreItems quando o "back-top-btn" for precionado
-function removeImagesBackTop () {
-
-    setTimeout ( () => {
-        // __Verificar se o item possui a tag "dinamicImage"
-        const children = Array.from(container.children);
-
-        children.forEach(item => { 
-            if ( item.classList.contains('dinamicImage') ) {
-                container.removeChild(item);
-            }
-        })
-
-        // __atualizar "itesmLoaded"
-        const numeroElementosRemover = itemsLoaded.length - itemsPerPage;
-        const indexInicial = itemsPerPage ;
-
-        itemsLoaded.splice(indexInicial, numeroElementosRemover);
-        currentPage = 2;
-
-        // __exibir "back-top-btn"
-        document.querySelector('#load-btn').style.display = 'block';
-    }, 600);
-}
