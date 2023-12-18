@@ -21,7 +21,7 @@ window.addEventListener('scroll', function(){
         document.querySelector('#home-link').classList.remove('active');
         document.querySelector('#bijuteria-link').classList.add('active');
 
-        document.querySelector('#conj-dropdown').classList.add('sub-active');
+        document.querySelector('.conj-dropdown').classList.add('sub-active');
 
 
       } else {
@@ -30,7 +30,7 @@ window.addEventListener('scroll', function(){
         document.querySelector('#bijuteria-link').classList.remove('active');
         document.querySelector('#home-link').classList.add('active');
 
-        document.querySelector('#conj-dropdown').classList.remove('sub-active');
+        document.querySelector('.conj-dropdown').classList.remove('sub-active');
 
       }
 })
