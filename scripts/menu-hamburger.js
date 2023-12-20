@@ -1,83 +1,77 @@
-const menuBtn = document.querySelector('#menu-icon');
-const burgerList = document.querySelector('.navbar-menu-hamburger');
-let aberto = false;
+const menuIcon = document.querySelector('#menu-icon');
+const menuBurger = document.querySelector('.navbar-menu-burger');
+const categorias = document.querySelectorAll('.subcategorizado');
+const listaCategorias = document.querySelectorAll('#lista-menu-burger > li');
+let menuAberto = false;
 
-// Fechar todos os dropdowns
-function fecharDropdowns() {
-    var todosDropdowns = document.querySelectorAll('.dropdown-burger');
-    todosDropdowns.forEach(function (dropdown) {
-        dropdown.style.display = 'none';
-        });
+// Funções para abrir e fechar o menu burger:
+// _abrir
+function abrirMenuBurger() {
+    if (!menuAberto) {
+        menuBurger.style.display = 'block';
+        menuAberto = true;
+    }
 }
 
-// EventListeners:
-menuBtn.addEventListener('click', () => {
-    if (aberto == false) {
-        abrirMenu ();
-    } else {
-        fecharMenu ();
+//_fechar
+function fecharMenuBurger() {
+    if (menuAberto) {
+        menuBurger.style.display = 'none';
+        menuAberto = false;
     }
+}
+
+
+// Função para fechar dropdowns:
+function fecharDropdowns(categoriaClicada) {
+    categorias.forEach(categoria => {
+        if (categoria !== categoriaClicada) {
+            const dropdown = categoria.querySelector('.dropdown-burger');
+            dropdown.style.display = 'none';
+        }
+    });
+}
+
+
+// Event Listeners:
+// _Fechar menu caso a categoria não possuir subcategorias
+listaCategorias.forEach(listItem => {
+    listItem.addEventListener('click', () => {
+        const temSubcategoria = listItem.classList.contains('subcategorizado');
+
+        if (!temSubcategoria) {
+            fecharMenuBurger();
+        }
+    })
 })
 
-// Funções abrir e fehar menu
-function abrirMenu () {
-    if (aberto == false) {
-        burgerList.style.display = 'block';
-        aberto = true;
-    }
-}
+// _Abrir menu burger
+menuIcon.addEventListener('click', () => {
+    menuAberto ? fecharMenuBurger() : abrirMenuBurger();
+});
 
-function fecharMenu () {
-    if (aberto = true) {
-        burgerList.style.display = 'none';
-        aberto = false;
-        fecharDropdowns();
-    }
-}
+// _Abrir e fechar dropdowns
+categorias.forEach(categoria => {
+    categoria.addEventListener('click', () => {
+        // __fechar os dropdowns antes ativos
+        fecharDropdowns(categoria);
 
-document.addEventListener('DOMContentLoaded', () => {
+        // __abrir o novo dropdown, selecionado
+        const dropdown = categoria.querySelector('.dropdown-burger');
+        const temSubcategorias = dropdown && dropdown.children.length > 0;
 
-    // Selecionar todos os elementos dentro da lista com a classe ".dropdown-burger"
-    var listaItens = document.querySelectorAll('.dropdown-burger li');
-
-    // Adicionar um eventListener a cada elemento do dropdown:
-    listaItens.forEach(function (item) {
-        item.addEventListener('click', function () {
-            // Fechar os dropdowns antes de redirecionar
-            fecharDropdowns();
-
-            // Faça algo quando um item do dropdown for clicado (ex.: redirecionar para o link)
-            window.location.href = item.querySelector('a').getAttribute('href');
-        });
+        if (temSubcategorias) {
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
     });
 
-    // Adicione um eventListener aos elementos que contêm subcategorias
-    var categoriasComDropdown = document.querySelectorAll('.navbar-menu-hamburger > li');
-
-    categoriasComDropdown.forEach(function (categoria) {
-        categoria.addEventListener('click', function () {
-
-
-            // Fechar os dropdowns abertos
-            fecharDropdowns();
-
-            // Mostre ou oculte o dropdown correspondente
-            var dropdownID = categoria.querySelector('.dropdown-burger').id;
-            var dropdownElement = document.getElementById(dropdownID);
-            
-            // _verificar se o display = "none", se for, substituir por "block"
-                if (dropdownElement.style.display === 'none' || dropdownElement.style.display === '' ) {
-
-                    dropdownElement.style.display = 'block';
-
-                } else {
-
-                    dropdownElement.style.display = 'none';
-
-                }
+    const opcoes = categoria.querySelectorAll('.dropdown-burger li');
+    opcoes.forEach(opcao => {
+        opcao.addEventListener('click', () => {
+            fecharMenuBurger();
+            // Adicione aqui o código específico para lidar com a opção clicada
         });
     });
 });
-
 
 

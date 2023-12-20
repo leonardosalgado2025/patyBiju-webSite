@@ -621,6 +621,11 @@ footer span{
     }
 }
 
+/* Menu Burger Pre: */
+.navbar-menu-burger{
+    display: none;
+}
+
 @media (  max-width:900px){
     #navbar-contacto{
         display: none;
@@ -638,18 +643,21 @@ footer span{
 
 @media ( max-width:680px ){
 
+    /* Reajuste "header" original: */
+    /* _Navbar */
     .nav{
         justify-content: space-between;
     }
-
     .navbar{
         display: none;
     }
 
+    /* _logo */
     .logo-container{
         flex-grow: 2;
     }
     
+    /* _menu burger icon */
     #menu-icon{
         flex-grow: 1;
         display: block;
@@ -660,6 +668,8 @@ footer span{
         cursor: pointer;
     }
 
+
+    /* Reajuste Home Page: */
     .home{
         display: flex;
         align-items: center;
@@ -669,52 +679,50 @@ footer span{
         text-align: center;
     }
 
-    .navbar-menu-hamburger{
+
+    /* Menu Burger: */
+    /* _Categorias */
+    .navbar-menu-burger{
         display: none;
         position: fixed;
         background-color: cyan;
         top: 12%;
         left: 0;
-        width: 100vh;
+        width: 100vw;
         height: fit-content;
         z-index: 100;
     }
-    .navbar-menu-hamburger > li{
+    .navbar-menu-burger > ul > li{
         text-align: center;
         padding: 15px 0 15px 0;
         background-color: rgb(234, 234, 234);
     }
-    .navbar-menu-hamburger > li:hover{
-        background-color: rgb(216, 216, 216);
-        transition: background 0.1s ease-in-out;
-    }
-    .navbar-menu-hamburger > li a, .navbar-menu-hamburger li p{
+    .navbar-menu-burger a, .navbar-menu-burger > ul > li > p{
         font-size: 1.5rem;
         color: black;
         font-weight: bold;
         cursor: pointer;
     }
+    .navbar-menu-burger > ul > li:hover{
+        background-color: rgb(216, 216, 216);
+        transition: background 0.1s ease-in-out;
+    }
+    
+    /* _Dropdowns */
     .dropdown-burger{
-        display: block;
+        display: none;
         margin-top: 10px;
         height: fit-content;
     }
-    .dropdown-burger li a{
+    .dropdown-burger li{
+        display: block;
+        padding: 10px;
+    }
+    .dropdown-burger > li > a{
         font-size: 1rem;
     }
     .dropdown-burger li:hover{
         text-decoration: underline;
         background-image: radial-gradient(circle at center, rgb(232, 231, 231), rgb(216, 216, 216));
     }
-    .dropdown-burger li{
-        padding: 10px;
-    }
-    #drop-burger-0, #drop-burger-1{
-        display: none;
-    }
-    .active-burger{
-        text-decoration: underline;
-        color: gold;
-    }
-    
 }
