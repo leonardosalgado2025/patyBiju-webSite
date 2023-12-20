@@ -65,6 +65,7 @@ header{
 /* _icon */
 #menu-icon{
     display: none;
+    user-select: none;
 }
 
 /* _general */
@@ -669,6 +670,7 @@ footer span{
     }
 
     .navbar-menu-hamburger{
+        display: none;
         position: fixed;
         background-color: cyan;
         top: 12%;
@@ -686,14 +688,16 @@ footer span{
         background-color: rgb(216, 216, 216);
         transition: background 0.1s ease-in-out;
     }
-    .navbar-menu-hamburger > li a{
+    .navbar-menu-hamburger > li a, .navbar-menu-hamburger li p{
         font-size: 1.5rem;
         color: black;
         font-weight: bold;
+        cursor: pointer;
     }
     .dropdown-burger{
-        display: none;
+        display: block;
         margin-top: 10px;
+        height: fit-content;
     }
     .dropdown-burger li a{
         font-size: 1rem;
@@ -705,3 +709,12 @@ footer span{
     .dropdown-burger li{
         padding: 10px;
     }
+    #drop-burger-0, #drop-burger-1{
+        display: none;
+    }
+    .active-burger{
+        text-decoration: underline;
+        color: gold;
+    }
+    
+}

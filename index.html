@@ -224,11 +224,11 @@
     <div>
         <ul class="navbar-menu-hamburger">
             <li><a href="#home-page">Home</a></li>
-            <li>
-                <a href="#biju-conjuntos-page">Bijuteria</a>
+            <li class="subcategorizado">
+                <p id="biju-conjuntos-burger"> Bijuteria </p>
 
-                <ul class="dropdown-burger">
-                    <li class="conj-dropdown dropdown-content"><a href="#biju-conjuntos-page" >Conjuntos</a></li>
+                <ul id="drop-burger-0" class="dropdown-burger">
+                    <li><a href="#biju-conjuntos-page" >Conjuntos</a></li>
                     <li><a href="#">Pulseiras</a></li>
                     <li><a href="#">Colares</a></li>
                     <li><a href="#">Brincos</a></li>
@@ -240,8 +240,13 @@
                 </ul>
 
             </li>
-            <li>
-                <a href="#">Lembranças</a>
+
+            <li class="subcategorizado">
+                <p>Lembranças</p>
+                <ul id="drop-burger-1" class="dropdown-burger">
+                    <li><a href="#">Porta-chaves</a></li>
+                    <li><a href="#">Gangas</a></li>
+                </ul>
             </li>
             <li><a href="#">Contactos</a></li>
             <li><a href="#">Sobre</a></li>
@@ -252,6 +257,7 @@
     <!-- Scripts -->
     <script src="scripts/back-top.js"></script>
     <script src="scripts/index/load-more-conjuntos.js"></script>
+    <script src="scripts/menu-hamburger.js"></script>
      
 </body>
 </html>
