@@ -4,6 +4,7 @@
 
 :root{
     --cor-linhas: rgba(180, 180, 180, 0.703);
+    --cor-destaque :#FCE477;
     --h2-heading-size: 2.2rem;
     --h3-heading-size: 1.3rem;
     --h3-letspacing-size: 0.15rem;
@@ -377,7 +378,7 @@ header{
     width: 80%;
     text-align: center;
     font-size: 2.2rem;
-    background-color: #FCE477;
+    background-color: var(--cor-destaque);
     border-radius: 10px;
     cursor: pointer;
     border: 1.5px solid transparent;
@@ -683,7 +684,7 @@ footer span{
     /* Menu Burger: */
     /* _Categorias */
     .navbar-menu-burger{
-        display: none;
+        display: block;
         position: fixed;
         background-color: cyan;
         top: 12%;
@@ -691,6 +692,9 @@ footer span{
         width: 100vw;
         height: fit-content;
         z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.2s ease-in-out;
     }
     .navbar-menu-burger > ul > li{
         text-align: center;
@@ -724,5 +728,22 @@ footer span{
     .dropdown-burger li:hover{
         text-decoration: underline;
         background-image: radial-gradient(circle at center, rgb(232, 231, 231), rgb(216, 216, 216));
+    }
+
+    /* Dropdown ativo: */
+    .active-burger{
+        padding: 7px;
+        border-radius: 5px;
+        background-color: var(--cor-destaque);
+    }
+
+
+    /* Home Page: */
+    .home{
+        justify-content: center;
+        padding: 0;
+    }
+    .home-text{
+        padding-bottom: 25px;
     }
 }

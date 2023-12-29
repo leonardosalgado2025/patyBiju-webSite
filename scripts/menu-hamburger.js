@@ -2,13 +2,15 @@ const menuIcon = document.querySelector('#menu-icon');
 const menuBurger = document.querySelector('.navbar-menu-burger');
 const categorias = document.querySelectorAll('.subcategorizado');
 const listaCategorias = document.querySelectorAll('#lista-menu-burger > li');
+
 let menuAberto = false;
 
 // Funções para abrir e fechar o menu burger:
 // _abrir
 function abrirMenuBurger() {
     if (!menuAberto) {
-        menuBurger.style.display = 'block';
+        menuBurger.style.opacity = '1';
+        menuBurger.style.visibility = 'visible'
         menuAberto = true;
     }
 }
@@ -16,9 +18,12 @@ function abrirMenuBurger() {
 //_fechar
 function fecharMenuBurger() {
     if (menuAberto) {
-        menuBurger.style.display = 'none';
+        menuBurger.style.opacity = '0';
+        menuBurger.style.visibility = 'hidden'
         menuAberto = false;
     }
+
+    fecharDropdowns()
 }
 
 
@@ -73,5 +78,19 @@ categorias.forEach(categoria => {
         });
     });
 });
+
+function rolou () {
+    console.log('O user rolou a página')
+}
+
+
+// Função para fechar menu ao dar scroll:
+window.addEventListener('scroll', () => {
+    clearTimeout(window.scrollTimeout);
+    window.scrollTimeout = setTimeout(fecharMenuBurger(), 200)
+})
+
+
+
 
 
